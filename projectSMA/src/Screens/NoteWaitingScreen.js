@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Text, TouchableOpacity, View, SafeAreaView, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-class REpiphanyScreen extends Component {
+class NoteWaitingScreen extends Component {
 
   render(){
     return(
       <>
         <SafeAreaView style={{ flex: 1 }}>
           <View>
-            <TouchableOpacity onPress={() => Actions.rPostOpened()}>
+            <TouchableOpacity onPress={() => Actions.replace('noteOpened')}>
               <View style={styles.buttonStyle}>
                 <Text style={styles.buttonTextStyle}>Open</Text>
               </View>
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default REpiphanyScreen;
+export default NoteWaitingScreen;

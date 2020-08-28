@@ -17,7 +17,7 @@ const CategoryIcon = ( {label, link} ) => {
   return (
     <>
     <TouchableOpacity
-      onPress={() => Actions.rEpiphany()}>
+      onPress={() => Actions.push('noteWaiting')}>
       <View style={styles.iconStyle}>
         <LinearGradient colors={[ '#F9945E', '#512B58']} style={styles.linearGradient}>
           <Text style={styles.textStyle} >{label}</Text>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, SafeAreaView, TouchableOpacity, StyleSheet, } from 'react-native';
 
-class ReviewPostScreen extends Component {
+class ReviewNoteScreen extends Component {
 
   render() {
     return(
@@ -10,12 +10,12 @@ class ReviewPostScreen extends Component {
           <View style={styles.mainViewStyle}>
             <TouchableOpacity>
               <View style={styles.btnStyle}>
-                <Text style={styles.btnTextStyle}>Add Post to PILE</Text>
+                <Text style={styles.btnTextStyle}>Add Note to PILE</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity>
               <View style={styles.btnStyle}>
-                <Text style={styles.btnTextStyle}>Submit Post</Text>
+                <Text style={styles.btnTextStyle}>Submit Note</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ReviewPostScreen;
+export default ReviewNoteScreen;

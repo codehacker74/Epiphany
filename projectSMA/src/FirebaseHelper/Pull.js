@@ -1,25 +1,13 @@
 import database from 'firebase/database';
 
-const dbRef = database().ref();
+function getAllUserPosts() {
 
-database({ postRef })
-  .ref('posts/')
-  .once(${postRef}, snapshot => {
-    return snapshot.val()
-  });
+}
 
-function postData({ postRef }){
+function getAllFeedPosts() {
 
-};
+}
 
-function feedData({ userRef }) {
-  const dbRefUsersFriends = database().ref('users/$(userRef)/friends')
-    dbRefUsersFriends.once("value")
-      .then(function(snapshot) {
-        const usersFriends = snapshot.key;
-      })
+function pullUserInfo() {
 
-  for(){
-    
-  }
 }

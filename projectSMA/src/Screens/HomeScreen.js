@@ -15,7 +15,9 @@ import BottomBar from '../Components/BottomBar';
 
 class HomeScreen extends Component {
 
+  componentDidMount(){
 
+  }
 
   render() {
     return (
