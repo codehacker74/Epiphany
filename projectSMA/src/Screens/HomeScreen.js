@@ -1,41 +1,34 @@
-/**
- * ProjectSMA - React Native App
- * https://github.com/facebook/react-native
- *
- * Written by Andrew Masters
- * June 21, 2020
- */
-
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, SafeAreaView, FlatList, ScrollView, Button} from 'react-native';
-import {Actions} from 'react-native-router-flux';
-import CategoryIcon from '../Components/CategoryIcon';
-import { CategoryListData } from '../Components/CategoryIcon';
-import BottomBar from '../Components/BottomBar';
+import { Image, Text, TouchableOpacity, View, SafeAreaView, StyleSheet } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 class HomeScreen extends Component {
 
-  componentDidMount(){
-
-  }
-
-  render() {
-    return (
+  render(){
+    return(
       <>
-        <SafeAreaView style={{ }}>
-
-          <View style={ styles.categoryStyle }>
-            <CategoryIcon label="New Topics" />
-            <CategoryIcon label="Idea Time" />
-            <CategoryIcon label="More Categories..." />
+        <SafeAreaView style={{ flex: 1 }}>
+          <View>
+            <View>
+              <TouchableOpacity onPress={() => Actions.replace('newNote')}>
+                <View style={styles.buttonStyle}>
+                  <Text style={styles.buttonTextStyle}>Open</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View>
+              <TouchableOpacity onPress={() => Actions.replace('noteOpened')}>
+                <Image source={require('../assets/images/LetterBtn.png')} />
+              </TouchableOpacity>
+            </View>
+            <View>
+              <TouchableOpacity onPress={() => Actions.replace('profile')}>
+                <View style={styles.buttonStyle}>
+                  <Text style={styles.buttonTextStyle}>Button for some purpose</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
-
-          <View style={styles.lineStyle}/>
-
-          <ScrollView style={styles.scrollStyle}>
-
-          </ScrollView>
-
         </SafeAreaView>
       </>
     );
@@ -43,21 +36,20 @@ class HomeScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  scrollStyle: {
-    flex: 1,
-
-  },
-  categoryStyle: {
-    flexDirection: 'row',
-    alignContent: 'center',
+  buttonStyle: {
+    height: 40,
+    width: 150,
+    margin: 20,
+    backgroundColor: '#F9945E',
+    borderRadius: 10,
+    alignItems: 'center',
     justifyContent: 'center',
   },
-  lineStyle: {
-    alignContent: 'stretch',
-    backgroundColor: '#F9945E',
-    height: 2,
-  },
-
+  buttonTextStyle: {
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 17,
+    color: 'white',
+  }
 });
 
 export default HomeScreen;

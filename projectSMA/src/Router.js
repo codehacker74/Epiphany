@@ -15,7 +15,6 @@ import HomeScreen from './Screens/HomeScreen';
 import ChatListScreen from './Screens/ChatListScreen';
 import SettingsScreen from './Screens/SettingsScreen';
 import ProfileScreen from './Screens/ProfileScreen';
-import NoteWaitingScreen from './Screens/NoteWaitingScreen';
 import NewNoteScreen from './Screens/NewNoteScreen';
 import ReviewNoteScreen from './Screens/ReviewNoteScreen';
 import NoteOpenedScreen from './Screens/NoteOpenedScreen';
@@ -28,16 +27,11 @@ const RouterComponent = () => {
           <Scene initial hideNavBar key="login">
             <Scene hideNavBar type='replace' key="loginScreen" component={LoginScreen} />
             <Scene hideNavBar type='replace' key="registerScreen" component={RegisterScreen} />
-            <Scene key="homeScreen" component={HomeScreen} title="Welcome to the PILE"
+            <Scene key="homeScreen" component={HomeScreen} title="EPIPHANY"
             hideNavBar={false}
             type='replace'
             onLeft={() => Actions.profile()}
-            leftButtonImage={require('../assets/images/ProfileIcon.png')}
-            onRight={() => Actions.push('newNote')}
-            rightButtonImage={require('../assets/images/NewPostIcon.png')}/>
-
-            <Scene key="noteWaiting" component={NoteWaitingScreen} title="The PILE"
-            hideNavBar={false} />
+            leftButtonImage={require('../assets/images/ProfileIcon.png')}/>
 
             <Scene key="newNote" component={NewNoteScreen} title="New Note"
             hideNavBar={false} />

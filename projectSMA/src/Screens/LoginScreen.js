@@ -46,7 +46,8 @@ class LoginScreen extends Component {
 
     if (!result) {
       console.log("Account Not Found");
-      this.setState(() => { error:'Login Failed'})
+      this.setState(() => { error:'Email or Password is incorrect'})
+      return;
     }
     console.log("Account Logged In");
     Actions.replace('homeScreen')

@@ -8,18 +8,26 @@
 
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, FlatList, TouchableOpacity, } from 'react-native';
-import { logoutUser } from '../FirebaseHelper/Auth';
-import CategoryIcon from '../Components/CategoryIcon';
+import { CategoryIcon } from '../Components/CategoryIcon';
 import { CategoryListData } from '../Components/CategoryIcon';
 import { Actions } from 'react-native-router-flux';
+import { pullUserInfo } from '../FirebaseHelper/Pull';
+import { logoutUser } from '../FirebaseHelper/Auth';
 
 class ProfileScreen extends Component {
 
-  logoutPressed() {
-    if (!logoutUser()) {
+  async componentDidMount() {
+    var dict = await pullUserInfo();
+
+  }
+
+  async logoutPressed() {
+    if ( !(await logoutUser()) ) {
       //show error message for user not successfully logged out
+      console.log("Attempted to logout user but failed")
+      return;
     }
-    
+
     Actions.reset('login')
   }
 
