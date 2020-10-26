@@ -25,7 +25,7 @@ import { Actions } from 'react-native-router-flux';
 
 class LoginScreen extends Component {
 
-  componentDidMount() {
+  async componentDidMount() {
       // console.log('Check if user exists')
       // if(checkUser()){
       //   console.log('user exists, moving to main scren')

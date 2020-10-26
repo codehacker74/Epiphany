@@ -30,8 +30,10 @@ const RouterComponent = () => {
             <Scene key="homeScreen" component={HomeScreen} title="EPIPHANY"
             hideNavBar={false}
             type='replace'
-            onLeft={() => Actions.profile()}
-            leftButtonImage={require('../assets/images/ProfileIcon.png')}/>
+            onLeft={() => Actions.push('profile')}
+            leftButtonImage={require('../assets/images/ProfileIcon.png')}
+            onRight={() => Actions.push('chatList')}
+            rightButtonImage={require('../assets/images/ChatIcon.png')}/>
 
             <Scene key="newNote" component={NewNoteScreen} title="New Note"
             hideNavBar={false} />
@@ -47,6 +49,10 @@ const RouterComponent = () => {
 
             <Scene key="settings" component={SettingsScreen} title="Settings"
             hideNavBar={false} />
+
+            <Scene key="chatList" component={ChatListScreen} title="Chat"
+            hideNavBar={false} />
+
           </Scene>
         </Scene>
 

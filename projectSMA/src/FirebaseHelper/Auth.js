@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { addUser } from './Push';
+import { addUser } from './UserHelper';
 
 var returnState;
 var user;

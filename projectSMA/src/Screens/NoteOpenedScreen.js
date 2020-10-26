@@ -4,36 +4,39 @@ import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import LinearGradient from 'react-native-linear-gradient';
 import {Text, View, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
-import { getRandomPost } from '../FirebaseHelper/Pull';
+import { getRandomNote } from '../FirebaseHelper/NoteHelper';
 
 class NoteOpenedScreen extends Component {
 
-  postData = {};
+  state = {data : []}
 
   async componentDidMount() {
-    postData = await getRandomPost();
-    if(postData != null){
+    this.setState({ data : await getRandomNote() })
+
+    if(this.state.data != null){
       return;
     }
     console.log("Random post data not found");
-    Actions.popTo('noteWaiting');
+    Actions.popTo('homeScreen');
   }
 
   render() {
     return (
       <>
-        <LinearGradient colors={['#F9945E', '#512B58']} style={styles.linearGradient}>
+        <LinearGradient colors={['#512B58', '#F9945E']} style={styles.linearGradient}>
         <SafeAreaView>
-        <View>
-          <View>
-            <Text style={styles.addNewStyle}>
+        <View style={styles.mainViewStyle}>
+          <View style={styles.noteViewStyle}>
+            <Text style={styles.noteTextStyle}>
+              hello
             </Text>
           </View>
-          <View>
-            <Text>Written By</Text>
+          <View style={styles.userViewStyle}>
+            <Text style={styles.writtenByStyle}>Written By</Text>
+            <Image source={require('../../assets/images/ProfileIcon.png')}/>
             <TouchableOpacity onPress={() => Action.replace('profile')}>
-              <View style={styles.buttonStyleOne}>
-                <Text style={styles.buttonTextStyle}>Connect With This Person</Text>
+              <View style={styles.buttonConnectStyle}>
+                <Text style={styles.connectWithTextStyle}>Connect With This Person</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -63,18 +66,52 @@ const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
   },
-  buttonStyle: {
-    height: 40,
-    width: 150,
+  mainViewStyle: {
+    alignItems: 'center',
+  },
+  noteViewStyle: {
+    margin: 30,
+  },
+  noteTextStyle: {
+    fontFamily: 'Montserrat-Regular',
+    color: 'white',
+    fontSize: 25,
+  },
+  userViewStyle: {
+    justifyContent: 'center'
+  },
+  writtenByStyle: {
+    fontFamily: 'Montserrat-Bold',
+    color: 'white',
+    fontSize: 15,
+  },
+  buttonConnectStyle: {
+    height: 50,
+    width: 300,
     margin: 20,
-    backgroundColor: '#F9945E',
+    backgroundColor: 'white',
     borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  connectWithTextStyle: {
+    fontFamily: 'Montserrat-Black',
+    color: '#F9945E',
+    fontSize: 15,
+  },
+  buttonStyle: {
+    height: 60,
+    width: 300,
+    margin: 15,
+    borderRadius: 10,
+    borderColor: 'white',
+    borderWidth: 3,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonTextStyle: {
     fontFamily: 'Montserrat-SemiBold',
-    fontSize: 17,
+    fontSize: 18,
     color: 'white',
   }
 });

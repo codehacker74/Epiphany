@@ -1,7 +1,8 @@
 import firebase from 'firebase';
+import {AddToPile} from './PileHelper'
 
 
-// writes a new user into the database
+// writes a new user to the firebase database
 async function addUser(firstName, lastName, rounds) {
 
   var result = false;
@@ -68,54 +69,43 @@ async function addUser(firstName, lastName, rounds) {
     result = await addUser(firstName, lastName, rounds+1);
     console.log("made a recursion")
   }
+  // ADD To Posts In the PILE
+  if(result == true){
+    await AddToPile();
+  }
+
   return result;
 }
 
 
-// writes a new post entry into firebase database
-async function writeNewPost(text) {
-  var result = false;
+// pulls all user info from firebase database
+async function PullUserInfo() {
+
   var user = firebase.auth().currentUser;
 
-  if(user != null){
+  if(user != null) {
+    var userName = user.displayName;
+    var userNotes = null;
 
-    var newPostKey = await firebase.database().ref().child('posts').push().key;
-    await firebase.database().ref().child('users').child(user.uid).child('posts').child(newPostKey).push();
 
-    var postData = {
-      uid: user.uid,
-      text: text,
-      likes: 0,
-    };
-
-    var userPostData = {
-      [newPostKey]: 'true'
-    };
-
-    var updates = {};
-    updates['/posts/' + newPostKey] = postData;
-    updates['/users/' + user.uid + '/posts/' + newPostKey] = 'true';
-
-    await firebase.database().ref().update(updates, function(error) {
-      if (error) {
-        // the write FAILED
-        console.log(error);
-      } else {
-        console.log("Post Push To Server - SUCCESSFUL");
-        result = true;
-      }
+    await firebase.database().ref('/users/' + user.uid + '/posts').once('value').then(function(snapshot) {
+      userNotes = snapshot.val()
     });
 
-  } else {
-    if(rounds == 3){
-      return false;
-    }
-    await setTimeout[Object.getOwnPropertySymbols(setTimeout)[0]](1000);
-    result = await writeNewPost(text);
-    console.log("made a recursion")
+    var userData = {
+      name: userName,
+      notes: {
+        userNotes
+      }
+    };
+    console.log("Download Profile - SUCCESS")
+    return userData;
+
   }
-  return result;
+
+  console.log("Download Profile - FAIL")
+  return null;
 
 }
 
-export { addUser, writeNewPost, };
+export {addUser, PullUserInfo, }

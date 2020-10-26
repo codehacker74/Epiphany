@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, TextInput, View, SafeAreaView, TouchableOpacity, StyleSheet, } from 'react-native';
-import { writeNewPost, } from '../FirebaseHelper/Push';
+import { writeNewNote, } from '../FirebaseHelper/NoteHelper';
 import { Actions } from 'react-native-router-flux';
 
 
@@ -14,7 +14,7 @@ class NewNoteScreen extends Component {
 
   async noteSubmitted() {
     const {text} = this.state;
-    var result = await writeNewPost(text);
+    var result = await writeNewNote(text);
 
     if (!result) {
       console.log("Post Push - FAILED")
