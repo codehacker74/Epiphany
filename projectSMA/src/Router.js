@@ -18,6 +18,7 @@ import ProfileScreen from './Screens/ProfileScreen';
 import NewNoteScreen from './Screens/NewNoteScreen';
 import ReviewNoteScreen from './Screens/ReviewNoteScreen';
 import NoteOpenedScreen from './Screens/NoteOpenedScreen';
+import EditProfileScreen from './Screens/EditProfileScreen';
 
 
 const RouterComponent = () => {
@@ -44,8 +45,11 @@ const RouterComponent = () => {
 
             <Scene key="profile" component={ProfileScreen} title="Profile"
             hideNavBar={false}
-            onRight={() => Actions.settings()}
-            rightButtonImage={require('../assets/images/SettingsIcon.png')} />
+            onRight={() => Actions.chatList()}
+            rightButtonImage={require('../assets/images/ChatIcon.png')} />
+
+            <Scene key="editProfile" component={EditProfileScreen} title="Edit Profile"
+            hideNavBar={false}/>
 
             <Scene key="settings" component={SettingsScreen} title="Settings"
             hideNavBar={false} />

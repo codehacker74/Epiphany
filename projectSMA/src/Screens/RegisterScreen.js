@@ -8,6 +8,7 @@
 
 import React, { Component } from 'react';
 import {
+  Dimensions,
   SafeAreaView,
   StyleSheet,
   Button,
@@ -22,6 +23,9 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { createNewUser } from '../FirebaseHelper/Auth';
 import { Actions } from 'react-native-router-flux';
+
+const {width, height} = Dimensions.get('window');
+
 
 class RegisterScreen extends Component {
 
@@ -129,15 +133,15 @@ class RegisterScreen extends Component {
             </TouchableOpacity>
             <Text> {this.state.error} </Text>
 
-        </View>
-        <View style={styles.loginBtnViewStyle}>
-          <TouchableOpacity
-            onPress={() => Actions.replace('loginScreen')}
-            style={styles.registerBtnStyle}>
-            <View>
-              <Text style={styles.btnTextColor}>BACK TO LOGIN</Text>
+            <View style={styles.loginBtnViewStyle}>
+              <TouchableOpacity
+                onPress={() => Actions.replace('loginScreen')}
+                style={styles.registerBtnStyle}>
+                <View>
+                  <Text style={styles.btnTextColor}>BACK TO LOGIN</Text>
+                </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
         </View>
         </SafeAreaView>
         </LinearGradient>
@@ -150,19 +154,20 @@ class RegisterScreen extends Component {
 const styles = StyleSheet.create({
   viewStyle: {
     alignItems: 'center',
-    margin: 20,
-    padding: 20,
+    margin: "3%",
+    padding: "3%",
 
   },
   imageStyle: {
-    margin: 20,
-    marginTop: 30,
+    margin: "2%",
+    height: height*0.2,
+    width: height*0.2,
   },
   titleStyle: {
     fontSize: 30,
     fontFamily: 'Montserrat-Regular',
     color: 'white',
-    marginBottom: 10,
+    marginBottom: "1%",
   },
   registerBtnStyle: {
     borderRadius: 10,
@@ -178,28 +183,27 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   inputViewStyle: {
-    height: 35,
-    width: 250,
+    height: height*0.045,
+    width: width*0.6,
     borderWidth: 2,
     borderRadius: 10,
     borderColor: 'white',
-    margin: 10,
+    margin: "3%",
   },
   inputSeparaterStyle: {
     alignItems: 'center',
-    margin: 10,
+    margin: "2%",
     justifyContent: 'space-between',
   },
   loginBtnStyle: {
-    height: 35,
-    width: 175,
+    height: height*0.045,
+    width: width*0.45,
     borderWidth: 2,
     borderRadius: 10,
     borderColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 10,
-    marginBottom: 10,
+    marginVertical: 10,
     shadowColor: 'black',
     shadowOffset: {
 	     width: 0,
@@ -214,15 +218,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-SemiBold',
   },
   loginBtnViewStyle: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    bottom: 0,
+
   },
   registerBtnStyle: {
-    height: 30,
-    width: 100,
+    height: height*0.045,
+    width: width*0.3,
     borderWidth: 2,
     borderRadius: 10,
     borderColor: 'white',

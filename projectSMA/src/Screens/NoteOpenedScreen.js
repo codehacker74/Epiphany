@@ -3,8 +3,11 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import LinearGradient from 'react-native-linear-gradient';
-import {Text, View, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
+import {Dimensions, Image, Text, View, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
 import { getRandomNote } from '../FirebaseHelper/NoteHelper';
+
+const {width, height} = Dimensions.get('window');
+
 
 class NoteOpenedScreen extends Component {
 
@@ -33,14 +36,14 @@ class NoteOpenedScreen extends Component {
           </View>
           <View style={styles.userViewStyle}>
             <Text style={styles.writtenByStyle}>Written By</Text>
-            <Image source={require('../../assets/images/ProfileIcon.png')}/>
+            <Image style={styles.imageSizeStyle}source={require('../../assets/images/ProfileIcon.png')}/>
             <TouchableOpacity onPress={() => Action.replace('profile')}>
               <View style={styles.buttonConnectStyle}>
                 <Text style={styles.connectWithTextStyle}>Connect With This Person</Text>
               </View>
             </TouchableOpacity>
           </View>
-          <View>
+          <View style={styles.viewBottomButtonsStyle}>
             <TouchableOpacity onPress={() => Actions.replace('homeScreen')}>
               <View style={styles.buttonStyle}>
                 <Text style={styles.buttonTextStyle}>Save this Note</Text>
@@ -70,7 +73,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   noteViewStyle: {
-    margin: 30,
+    marginTop: 15,
   },
   noteTextStyle: {
     fontFamily: 'Montserrat-Regular',
@@ -78,7 +81,16 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   userViewStyle: {
-    justifyContent: 'center'
+    alignItems: 'center',
+    marginTop: "20%"
+  },
+  viewBottomButtonsStyle: {
+    marginTop: "25%"
+  },
+  imageSizeStyle: {
+    margin: "2%",
+    height: height*0.1,
+    width: height*0.1
   },
   writtenByStyle: {
     fontFamily: 'Montserrat-Bold',
@@ -86,8 +98,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   buttonConnectStyle: {
-    height: 50,
-    width: 300,
+    height: height*0.06,
+    width: width*0.7,
     margin: 20,
     backgroundColor: 'white',
     borderRadius: 10,

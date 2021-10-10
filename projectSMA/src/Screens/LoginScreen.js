@@ -8,6 +8,7 @@
 
 import React, { Component } from 'react';
 import {
+  Dimensions,
   SafeAreaView,
   StyleSheet,
   Button,
@@ -23,7 +24,11 @@ import LinearGradient from 'react-native-linear-gradient';
 import { checkUser, loginUser } from '../FirebaseHelper/Auth';
 import { Actions } from 'react-native-router-flux';
 
+const {width, height} = Dimensions.get('window');
+
+
 class LoginScreen extends Component {
+
 
   async componentDidMount() {
       // console.log('Check if user exists')
@@ -93,7 +98,7 @@ class LoginScreen extends Component {
               </View>
             </TouchableOpacity>
             <Text> {this.state.error} </Text>
-            <Text>Don't have an account?</Text>
+            <Text style={{color: 'white', marginTop: "17%", marginBottom: "2%"}}>Don't have an account?</Text>
             <TouchableOpacity
               onPress={() => Actions.replace('registerScreen')}
               style={styles.registerBtnStyle}>
@@ -113,20 +118,17 @@ class LoginScreen extends Component {
 const styles = StyleSheet.create({
   viewStyle: {
     alignItems: 'center',
-    margin: 20,
-    padding: 20,
-
+    margin: "5%",
+    padding: "5%",
   },
   imageStyle: {
-    margin: 20,
-    marginTop: 30,
+    marginTop: "15%",
   },
   titleStyle: {
     fontSize: 30,
     fontFamily: 'Montserrat-Regular',
     color: 'white',
-    margin: 20,
-    marginBottom: 20,
+    margin: "5%",
   },
   registerBtnStyle: {
     borderRadius: 10,
@@ -137,13 +139,13 @@ const styles = StyleSheet.create({
   },
   userInputStyle: {
     flex: 1,
-    marginLeft: 5,
+    marginLeft: "3%",
     fontSize: 17,
     color: 'white',
   },
   inputViewStyle: {
-    height: 35,
-    width: 250,
+    height: height*0.05,
+    width: width*0.60,
     borderWidth: 2,
     borderRadius: 10,
     borderColor: 'white',
@@ -151,19 +153,17 @@ const styles = StyleSheet.create({
   },
   inputSeparaterStyle: {
     alignItems: 'center',
-    margin: 10,
+    margin: "5%",
     justifyContent: 'space-between',
   },
   loginBtnStyle: {
-    height: 35,
-    width: 175,
+    height: height*0.04,
+    width: width*0.4,
     borderWidth: 2,
     borderRadius: 10,
     borderColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 30,
-    marginBottom: 70,
     shadowColor: 'black',
     shadowOffset: {
 	     width: 0,
@@ -178,17 +178,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-SemiBold',
   },
   registerBtnStyle: {
-    height: 30,
-    width: 100,
+    height: height*0.04,
+    width: width*0.25,
     borderWidth: 2,
     borderRadius: 10,
     borderColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 5,
   },
   btnTextColor: {
-    color: 'white'
+    color: 'white',
+    fontSize: 16,
   },
 
 });

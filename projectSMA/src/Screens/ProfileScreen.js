@@ -7,12 +7,15 @@
  */
 
 import React, { Component } from 'react';
-import { Image, Text, View, StyleSheet, SafeAreaView, FlatList, TouchableOpacity, } from 'react-native';
+import { Dimensions, Image, Text, View, StyleSheet, SafeAreaView, FlatList, TouchableOpacity, } from 'react-native';
 import { CategoryIcon } from '../Components/CategoryIcon';
 import { CategoryListData } from '../Components/CategoryIcon';
 import { Actions } from 'react-native-router-flux';
 import { PullUserInfo } from '../FirebaseHelper/UserHelper';
 import { logoutUser } from '../FirebaseHelper/Auth';
+
+const {width, height} = Dimensions.get('window');
+
 
 class ProfileScreen extends Component {
 
@@ -48,7 +51,7 @@ class ProfileScreen extends Component {
               </View>
             </View>
             <View style={styles.buttonsViewStyle}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => Actions.push('editProfile')}>
                 <View style={styles.buttonStyle}>
                   <Text style={styles.buttonTextStyle}>Edit Profile</Text>
                 </View>
@@ -80,25 +83,25 @@ class ProfileScreen extends Component {
 const styles = StyleSheet.create({
   mainViewStyle: {
     alignItems: 'center',
-
+    flex: 1,
   },
   profileViewStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    margin: 20,
+    marginTop: "8%",
   },
   buttonsViewStyle: {
     flexDirection: 'row',
-
+    marginTop: "3%"
   },
   textViewStyle: {
     alignItems: 'center',
-    marginLeft: 25,
+    marginLeft: "5%",
   },
   profileImageStyle: {
     resizeMode: 'stretch',
-    height: 100,
-    width: 100,
+    height: height*0.12,
+    width: height*0.12,
   },
   nameTextStyle: {
     fontFamily: 'Montserrat-SemiBold',
@@ -108,15 +111,15 @@ const styles = StyleSheet.create({
   quoteTextStyle: {
     fontFamily: 'Montserrat-Regular',
     fontSize: 18,
-    marginTop: 10,
+    marginTop: 5,
   },
   scrollStyle: {
     margin: 10,
   },
   buttonStyle: {
-    height: 40,
-    width: 120,
-    margin: 5,
+    height: height*0.06,
+    width: width*0.3,
+    marginHorizontal: 5,
     backgroundColor: '#F9945E',
     borderRadius: 10,
     alignItems: 'center',
@@ -128,7 +131,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   flatListStyle: {
-    margin: 20,
+    margin: 1,
 
   },
 });

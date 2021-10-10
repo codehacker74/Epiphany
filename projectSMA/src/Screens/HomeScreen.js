@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Image, Text, TouchableOpacity, View, SafeAreaView, StyleSheet } from 'react-native';
+import { Dimensions, Image, Text, TouchableOpacity, View, SafeAreaView, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+
+const {width, height} = Dimensions.get('window');
+
 
 class HomeScreen extends Component {
 
@@ -17,7 +20,7 @@ class HomeScreen extends Component {
               </TouchableOpacity>
               <TouchableOpacity onPress={() => Actions.push('newNote')}>
                 <View style={styles.button2Style}>
-                  <Text style={styles.button2TextStyle}>Friends</Text>
+                  <Text style={styles.button2TextStyle}>Find Friends</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -44,19 +47,20 @@ const styles = StyleSheet.create({
   mainStyle: {
     alignItems: 'center',
     justifyContent: 'space-around',
-
+    flex: 1,
   },
   secondViewStyle: {
     justifyContent: 'space-around',
     flexDirection: 'row',
+    marginTop: "8%",
   },
   thirdViewStyle: {
     justifyContent: 'space-around',
-    marginTop: 130,
+    marginTop: "35.5%",
   },
   button1Style: {
-    height: 80,
-    width: 300,
+    height: height*0.09,
+    width: width*0.75,
     margin: 20,
     backgroundColor: '#F9945E',
     borderRadius: 10,
@@ -69,9 +73,9 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   button2Style: {
-    height: 60,
-    width: 150,
-    margin: 20,
+    height: height*0.07,
+    width: width*0.4,
+    marginHorizontal: "3%",
     borderColor: '#512B58',
     borderRadius: 10,
     borderWidth: 3,
